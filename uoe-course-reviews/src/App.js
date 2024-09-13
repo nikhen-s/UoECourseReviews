@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { Heading, Box, Card, CardBody, Text, Stack, Spacer} from '@chakra-ui/react'
 import DesktopNavBar from './NavBar';
 import theme from './Theme'
+import SearchAndFilterBar from './SearchAndFilterBar';
 
 function CourseDetailsBox({courseCode, courseName, description}){
   return (
@@ -41,6 +42,7 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <DesktopNavBar></DesktopNavBar>
+      <SearchAndFilterBar></SearchAndFilterBar>
       <CourseCard courseDetailsBox={<CourseDetailsBox courseCode="INFXXXX" courseName = "Computer Architecture and Design" description = "This is a test description."></CourseDetailsBox>} courseRatingBox={<CourseRatingBox averageRating="5.5" numberOfReviews="50"></CourseRatingBox>}>
       </CourseCard>
       <CourseCard courseDetailsBox={<CourseDetailsBox courseCode="INFXXXX" courseName = "Computer Architecture and Design" description = "This is a test description."></CourseDetailsBox>} courseRatingBox={<CourseRatingBox averageRating="5.5" numberOfReviews="50"></CourseRatingBox>}>
