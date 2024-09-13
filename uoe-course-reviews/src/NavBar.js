@@ -3,19 +3,22 @@ import { Icon } from '@chakra-ui/react'
 import { MdOutlineSchool } from "react-icons/md";
 const DesktopNavBar = () => { 
   //style the stack, inside it there is logo + elements
+  const mainCourseReviewLink = ""
+  const aboutUsLink = ""
+  const addReviewLink = ""
   const navBarColor = useColorModeValue('gray.800', 'gray.200')
   return(
-    <div>
-    <Stack direction={'row'} width="100%" bg = {navBarColor}>
+    <>
+    <Stack direction={'row'} width="100%" bg = {navBarColor} pr = {4} pl = {4}>
       <IconMenuItem icon = {<Icon as={MdOutlineSchool} boxSize={5}/>} label = {
           <strong>UoECourseReviews</strong>
-      } link = "www.google.com"></IconMenuItem>
+      } link = {mainCourseReviewLink}></IconMenuItem>
       <Spacer></Spacer>
-      <MenuItem label = "About Us" link = "www.google.com"></MenuItem>
-      <MenuItem label = "Leave a Review" link = "www.google.com"></MenuItem>
+      <MenuItem label = "About Us" link = {aboutUsLink}></MenuItem>
+      <MenuItem label = "Add Course Review" link = {addReviewLink}></MenuItem>
     </Stack>
     <Divider orientation='horizontal' />
-    </div>
+    </>
   )
 }
   const IconMenuItem = ({icon, label, link}) => {
