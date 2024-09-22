@@ -7,11 +7,11 @@ import {
   AccordionIcon,
 } from '@chakra-ui/react'
 
-function CourseDetailsBox({courseCode, courseName, courseDelivery, courseWorkExamRatio, courseCredits, courseLevel}){
+function CourseDetailsBox({courseCode, courseLink, courseName, courseDelivery, courseWorkExamRatio, courseCredits, courseLevel}){
     return (
     <Flex justifyContent="space-between" w = "100%">
       <Box w ="5%" textAlign={"left"}>
-        {courseCode}
+        <a href={courseLink}>{courseCode}</a>
       </Box>
       <Box w ="45%" textAlign={"left"}>
       <strong>{courseName}</strong>
@@ -40,12 +40,12 @@ function CourseDetailsBox({courseCode, courseName, courseDelivery, courseWorkExa
     )
   }
   
-  function CourseAccordionItem({courseCode, courseName, courseDelivery, courseWorkExamRatio, courseCredits, courseLevel, averageRating, numberOfReviews}){
+  function CourseAccordionItem({courseCode, courseLink, courseName, courseDelivery, courseWorkExamRatio, courseCredits, courseLevel, averageRating, numberOfReviews}){
     return(
       <AccordionItem borderRadius='md' marginLeft={4} marginRight={4}>
       <h2>
         <AccordionButton p = {3}>
-          <CourseDetailsBox courseCode={courseCode} courseName={courseName} courseDelivery={courseDelivery} courseWorkExamRatio={courseWorkExamRatio} courseCredits={courseCredits} courseLevel={courseLevel}></CourseDetailsBox>
+          <CourseDetailsBox courseCode={courseCode} courseLink={courseLink} courseName={courseName} courseDelivery={courseDelivery} courseWorkExamRatio={courseWorkExamRatio} courseCredits={courseCredits} courseLevel={courseLevel}></CourseDetailsBox>
           <Spacer></Spacer>
           <CourseRatingBox averageRating={averageRating} numberOfReviews={numberOfReviews}></CourseRatingBox>
           <AccordionIcon />
