@@ -26,7 +26,6 @@ const DesktopNavBar = () => {
     const linkHoverColor = useColorModeValue('gray.800', 'white')
     const popoverContentBgColor = useColorModeValue('gray.200', 'gray.800')
     return (
-      <Box>
         <Popover trigger={'hover'}>
           <PopoverTrigger>
             <Center
@@ -45,7 +44,6 @@ const DesktopNavBar = () => {
             </Center>
           </PopoverTrigger>
         </Popover>
-      </Box> 
     )
   }
 
@@ -54,7 +52,6 @@ const DesktopNavBar = () => {
     const linkHoverColor = useColorModeValue('gray.800', 'white')
     const popoverContentBgColor = useColorModeValue('gray.200', 'gray.800')
     return (
-      <Box>
         <Popover trigger={'hover'}>
           <PopoverTrigger>
             <Center
@@ -72,7 +69,6 @@ const DesktopNavBar = () => {
             </Center>
           </PopoverTrigger>
         </Popover>
-      </Box> 
     )
   }
 
