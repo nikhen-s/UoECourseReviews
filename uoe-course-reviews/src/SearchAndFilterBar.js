@@ -6,38 +6,42 @@ import {  BsChevronDown } from "react-icons/bs";
 const SearchAndFilterBar = () => {
     return(
         <Flex p = {4} gap = {1}>
-            <FilterBar></FilterBar>
-            <SearchBar></SearchBar>
+            <FilterBar filterName = "School" filterMenuItems={["School of Informatics", ""]} width = "7%"></FilterBar>
+            <SearchBar width = "47%"></SearchBar>
+            <FilterBar filterName = "Delivery" filterMenuItems={["SEM1","SEM2","YR"]} width = "10%"></FilterBar>
+            <FilterBar filterName = "Credits" filterMenuItems={["10","20"]} width = "10%"></FilterBar>
+            <FilterBar filterName = "CW%/Exam%" filterMenuItems={["No Exam"]} width = "10%"></FilterBar>
+            <FilterBar filterName = "Level" filterMenuItems={["8","10","11"]} width = "10%"></FilterBar>
         </Flex>
     )
 }
 
-const SearchBar = () => {
+const SearchBar = ({width}) => {
     return(
-        <InputGroup borderColor={'black'}>
+        <InputGroup borderColor={'black'} w = {width}>
             <InputLeftElement><Icon as={RiSearch2Line} boxSize={5}/></InputLeftElement>
             <Input placeholder='search a course by prof, name, or code...' />
         </InputGroup>
     )
 }
 
-const FilterBar = () => {
+const FilterBar = ({filterName, filterMenuItems, width}) => {
     return(
-    <Menu>
+    <Menu w = {width}>
         <MenuButton
             as={Button}
             aria-label='Filter'
             rightIcon={<BsChevronDown />}
             variant='outline'
             borderColor={'black'}
-        >School</MenuButton>
+        >{filterName}</MenuButton>
         <MenuList>
-            <MenuItem>
-            School of Informatics
-            </MenuItem>
-            <MenuItem>
-            School of Maths
-            </MenuItem>
+            {filterMenuItems.map((menuItem, index) => (
+                    <MenuItem key={index}>
+                        {menuItem}
+                    </MenuItem>
+                ))}
+
         </MenuList>
     </Menu>
     )
