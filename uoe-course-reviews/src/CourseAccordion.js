@@ -1,6 +1,5 @@
-import { Box, Flex, Center, CardBody, Text, Stack, Spacer} from '@chakra-ui/react'
+import { Box, Flex, Center, Text, Spacer} from '@chakra-ui/react'
 import {
-  Accordion,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
