@@ -12,11 +12,9 @@ function App() {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    console.log("Use effect ran")
     axios.get("/api/courses")
       .then(response => {
         setCourses(response.data)
-        console.log('Courses fetched:', response.data);
       }
         )
       .catch(error => console.error(error));
@@ -32,7 +30,7 @@ function App() {
               courseName = {course["Course_Name"]} courseDelivery = {course["Delivery"]} 
               courseWorkExamRatio={course["Work%/Exam%"]} courseCredits={course["Credits"]} 
               courseLevel = {course["Level"]} description = "This is a test description." 
-              averageRating="5.5" numberOfReviews="50">
+              averageRating="N/A" numberOfReviews="0">
             </CourseAccordionItem>)}
       </Accordion>
     </ChakraProvider>

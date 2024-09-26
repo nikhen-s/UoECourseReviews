@@ -1,4 +1,4 @@
-import { Popover, PopoverTrigger, Box, Spacer, Stack, Divider, useColorModeValue, Center} from '@chakra-ui/react'
+import { Popover, PopoverTrigger, Spacer, Stack, Divider, useColorModeValue, Center} from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/react'
 import { MdOutlineSchool } from "react-icons/md";
 const DesktopNavBar = () => { 

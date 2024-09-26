@@ -1,6 +1,5 @@
-import { Box, Flex, Center, CardBody, Text, Stack, Spacer} from '@chakra-ui/react'
+import { Box, Flex, Center, Text, Spacer} from '@chakra-ui/react'
 import {
-  Accordion,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
@@ -10,10 +9,10 @@ import {
 function CourseDetailsBox({courseCode, courseLink, courseName, courseDelivery, courseWorkExamRatio, courseCredits, courseLevel}){
     return (
     <Flex justifyContent="space-between" w = "100%">
-      <Box w ="5%" textAlign={"left"}>
+      <Box w ="7%" textAlign={"left"}>
         <a href={courseLink}>{courseCode}</a>
       </Box>
-      <Box w ="45%" textAlign={"left"}>
+      <Box w ="53%" textAlign={"left"}>
       <strong>{courseName}</strong>
       </Box>
       <Box w ="10%" textAlign={"left"}>
