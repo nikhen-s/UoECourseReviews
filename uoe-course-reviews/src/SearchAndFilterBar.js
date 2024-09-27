@@ -9,12 +9,11 @@ const SearchAndFilterBar = () => {
         //include beginning icon for ascending/descending!
         <Flex p = {4} gap = {1} width = "100%">
             <FilterBar filterName = "School" filterMenuItems={["School of Informatics"]} width ="7%"></FilterBar>
-            <SearchBar width ="47%"></SearchBar>
+            <SearchBar width ="52%"></SearchBar>
             <FilterBar filterName = "Delivery" filterMenuItems={["SEM1","SEM2","YR","FLEX"]} width ="8%"></FilterBar>
             <FilterBar filterName = "Credits" filterMenuItems={["10","20","40"]} width ="7%"></FilterBar>
-            <FilterBar filterName = "CW%/Exam%" filterMenuItems={["Ascending, Descending"]} width ="11%"></FilterBar>
-            <FilterBar filterName = "Level" filterMenuItems={["8","10","11"]} width ="7%"></FilterBar>
-            <Spacer display="flex" width="3%"></Spacer>
+            <FilterBar filterName = "CW%/Exam%" filterMenuItems={["Ascending, Descending"]} width ="10%"></FilterBar>
+            <FilterBar filterName = "Level" filterMenuItems={["8","10","11"]} width ="6%"></FilterBar>
             <Button variant='outline' borderColor={'black'} display="flex" width="10%">
                 Ratings
             </Button>
