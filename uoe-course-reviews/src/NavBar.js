@@ -4,8 +4,8 @@ import { MdOutlineSchool } from "react-icons/md";
 const DesktopNavBar = () => { 
   //style the stack, inside it there is logo + elements
   const mainCourseReviewLink = ""
-  const aboutUsLink = ""
-  const addReviewLink = ""
+  const aboutUsLink = "/aboutus"
+  const addReviewLink = "/review"
   const navBarColor = useColorModeValue('gray.800', 'gray.200')
   return(
     <>
