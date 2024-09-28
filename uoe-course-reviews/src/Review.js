@@ -24,13 +24,12 @@ import {
 const Review = () => {
     
     return (
-        <FormControl p={4} m={2} rounded="md" width={"98%"} spacing={3}>
+        <FormControl paddingTop={5} paddingLeft={10} paddingRight={10} verticalAlign={"center"} rounded="md" spacing={3}>
             <Stack spacing={2}>
                 <FormLabel fontWeight={"bold"}>Course Name</FormLabel>
                 <Input type='text' borderColor={'black'} backgroundColor="white"/>          
-                <HStack>
-                <FormLabel as='legend' width={"10%"} fontWeight={"bold"}>Type of Student</FormLabel>
-                <RadioGroup defaultValue='Undergraduate' width={"40%"}>
+                <FormLabel as='legend' fontWeight={"bold"}>Type of Student</FormLabel>
+                <RadioGroup defaultValue='Undergraduate'>
                     <HStack spacing='24px'>
                     <Radio value='Undergraduate' borderColor={'grey'}>Undergraduate</Radio>
                     <Radio value='Masters' borderColor={'grey'}>Masters</Radio>
@@ -38,19 +37,20 @@ const Review = () => {
                     <Radio value='Exchange' borderColor={'grey'}>Exchange</Radio>
                     </HStack>
                 </RadioGroup>
-                <FormLabel width={"20%"} fontWeight={"bold"}>When did you take this course?</FormLabel>
-                <NumberInput max={2024} min={1900} defaultValue={2024} borderColor={'black'} width={"30%"}>
+                <FormLabel fontWeight={"bold"}>When did you take this course?</FormLabel>
+                <NumberInput max={2024} min={1900} defaultValue={2024} borderColor={'black'}>
                     <NumberInputField />
                     <NumberInputStepper>
                     <NumberIncrementStepper />
                     <NumberDecrementStepper />
                     </NumberInputStepper>
                 </NumberInput>
-                </HStack>
                 <Text fontWeight={"bold"}>Rating</Text>
-                <RatingCriteriaBox ratingCriteria={"Teaching Quality"}></RatingCriteriaBox>
-                <RatingCriteriaBox ratingCriteria={"Usefulness"}></RatingCriteriaBox>
-                <RatingCriteriaBox ratingCriteria={"Workload Balance"}></RatingCriteriaBox> 
+                <Stack rounded="md" borderColor={"black"} border={"1px"} p ={4} width={"100%"}>
+                    <RatingCriteriaBox ratingCriteria={"Teaching Quality"}></RatingCriteriaBox>
+                    <RatingCriteriaBox ratingCriteria={"Usefulness"}></RatingCriteriaBox>
+                    <RatingCriteriaBox ratingCriteria={"Workload Balance"}></RatingCriteriaBox> 
+                </Stack>
                 <FormLabel fontWeight={"bold"}>Review/Study Tips</FormLabel>
                 <Input type='text' borderColor={'black'} height={70}/>
                 <Button width="7%" backgroundColor="gray.800" color="white">
