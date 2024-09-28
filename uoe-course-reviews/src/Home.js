@@ -1,7 +1,6 @@
 import './App.css';
 import * as React from 'react'
 import { ChakraProvider, Accordion } from '@chakra-ui/react'
-import DesktopNavBar from './NavBar';
 import theme from './Theme'
 import SearchAndFilterBar from './SearchAndFilterBar';
 import CourseAccordionItem from './CourseAccordion';
@@ -22,9 +21,8 @@ function Home() {
 
   return (
     <ChakraProvider theme={theme}>
-      <DesktopNavBar></DesktopNavBar>
       <SearchAndFilterBar></SearchAndFilterBar>
-      <Accordion defaultIndex={[0]} allowMultiple={true}>
+      <Accordion allowMultiple={true}>
             {courses.map(course => 
             <CourseAccordionItem courseCode={course["Code/DPT"]} courseLink ={course["DPMT_Link"]} 
               courseName = {course["Course_Name"]} courseDelivery = {course["Delivery"]} 

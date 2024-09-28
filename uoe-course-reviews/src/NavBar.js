@@ -3,7 +3,7 @@ import { Icon } from '@chakra-ui/react'
 import { MdOutlineSchool } from "react-icons/md";
 const DesktopNavBar = () => { 
   //style the stack, inside it there is logo + elements
-  const mainCourseReviewLink = ""
+  const mainCourseReviewLink = "/"
   const aboutUsLink = "/aboutus"
   const addReviewLink = "/review"
   const navBarColor = useColorModeValue('gray.800', 'gray.200')
