@@ -1,39 +1,22 @@
-import './App.css';
-import * as React from 'react'
-import { ChakraProvider, Accordion } from '@chakra-ui/react'
-import DesktopNavBar from './NavBar';
+import React from "react";
+import { ChakraProvider } from '@chakra-ui/react'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import Review from "./Review"
+import DesktopNavBar from "./NavBar";
 import theme from './Theme'
-import SearchAndFilterBar from './SearchAndFilterBar';
-import CourseAccordionItem from './CourseAccordion';
-import { useState, useEffect } from "react";
-import axios from "axios";
-
 function App() {
-  const [courses, setCourses] = useState([]);
-
-  useEffect(() => {
-    axios.get("/api/courses")
-      .then(response => {
-        setCourses(response.data)
-      }
-        )
-      .catch(error => console.error(error));
-  }, []);
-
   return (
-    <ChakraProvider theme={theme}>
-      <DesktopNavBar></DesktopNavBar>
-      <SearchAndFilterBar></SearchAndFilterBar>
-      <Accordion defaultIndex={[0]} allowMultiple={true}>
-            {courses.map(course => 
-            <CourseAccordionItem courseCode={course["Code/DPT"]} courseLink ={course["DPMT_Link"]} 
-              courseName = {course["Course_Name"]} courseDelivery = {course["Delivery"]} 
-              courseWorkExamRatio={course["Work%/Exam%"]} courseCredits={course["Credits"]} 
-              courseLevel = {course["Level"]} description = "This is a test description." 
-              averageRating="N/A" numberOfReviews="0" listOfStudentReviews = {["",""]}>
-            </CourseAccordionItem>)}
-      </Accordion>
-    </ChakraProvider>
+    <Router>
+      <ChakraProvider theme={theme}>
+        <DesktopNavBar></DesktopNavBar>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/review" element={<Review />} />
+          <Route path="/aboutus" element={<Home />} />
+        </Routes>
+        </ChakraProvider>
+    </Router>
   );
 }
 
