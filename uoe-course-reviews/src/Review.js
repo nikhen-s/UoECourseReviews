@@ -6,6 +6,7 @@ import {
     FormLabel,
     Flex,
     Box,
+    Button,
     Stack,
     Select,
     FormErrorMessage,
@@ -23,7 +24,7 @@ import {
 const Review = () => {
     
     return (
-        <FormControl p={4} m={2} rounded="md" width={"98%"} spacing={2}>
+        <FormControl p={4} m={2} rounded="md" width={"98%"} spacing={3}>
             <Stack spacing={2}>
                 <FormLabel fontWeight={"bold"}>Course Name</FormLabel>
                 <Input type='text' borderColor={'black'} backgroundColor="white"/>          
@@ -46,14 +47,15 @@ const Review = () => {
                     </NumberInputStepper>
                 </NumberInput>
                 </HStack>
-                <FormLabel fontWeight={"bold"}>Review/Study Tips</FormLabel>
-                <Input type='text' borderColor={'black'} height={70}/>
                 <Text fontWeight={"bold"}>Rating</Text>
-                <Stack rounded="md" borderColor={"black"} border={"1px"} p ={4}>
                 <RatingCriteriaBox ratingCriteria={"Teaching Quality"}></RatingCriteriaBox>
                 <RatingCriteriaBox ratingCriteria={"Usefulness"}></RatingCriteriaBox>
                 <RatingCriteriaBox ratingCriteria={"Workload Balance"}></RatingCriteriaBox> 
-                </Stack>
+                <FormLabel fontWeight={"bold"}>Review/Study Tips</FormLabel>
+                <Input type='text' borderColor={'black'} height={70}/>
+                <Button width="7%" backgroundColor="gray.800" color="white">
+                    Submit
+                </Button>
             </Stack> 
         </FormControl>
     )
@@ -66,10 +68,10 @@ const RatingCriteriaBox = ({ratingCriteria}) => {
     }
     return (
         <Flex direction="row" alignItems="center" >
-            <Text display={"flex"} width={"15%"}>{ratingCriteria}</Text>
+            <Text display={"flex"} width={"50%"}>{ratingCriteria}</Text>
             <Rating
                 display={"flex"}
-                width={"85%"}
+                width={"50%"}
                 onClick={handleRating}
                 initialValue={rating}
                 allowFraction={false}
