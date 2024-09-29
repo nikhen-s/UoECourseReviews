@@ -48,7 +48,7 @@ const Review = () => {
                 <Text fontWeight={"bold"}>Rating</Text>
                 <Stack rounded="md" borderColor={"black"} border={"1px"} p ={4} width={"100%"}>
                     <RatingCriteriaBox ratingCriteria={"Teaching Quality"}></RatingCriteriaBox>
-                    <RatingCriteriaBox ratingCriteria={"Usefulness"}></RatingCriteriaBox>
+                    <RatingCriteriaBox ratingCriteria={"Learning Impact"}></RatingCriteriaBox>
                     <RatingCriteriaBox ratingCriteria={"Workload Balance"}></RatingCriteriaBox> 
                 </Stack>
                 <FormLabel fontWeight={"bold"}>Review/Study Tips</FormLabel>
