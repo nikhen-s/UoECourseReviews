@@ -2,8 +2,8 @@ import './App.css';
 import * as React from 'react'
 import { ChakraProvider, Accordion } from '@chakra-ui/react'
 import theme from './Theme'
-import SearchAndFilterBar from './SearchAndFilterBar';
-import CourseAccordionItem from './CourseAccordion';
+import SearchAndFilterBar from './components/SearchAndFilterBar';
+import CourseAccordionItem from './components/CourseAccordion';
 import { useState, useEffect } from "react";
 import axios from "axios";
 

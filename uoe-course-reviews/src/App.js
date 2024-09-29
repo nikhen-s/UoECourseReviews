@@ -2,8 +2,8 @@ import React from "react";
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
-import Review from "./Review"
-import DesktopNavBar from "./NavBar";
+import Review from "./components/Review"
+import DesktopNavBar from "./components/NavBar";
 import theme from './Theme'
 function App() {
   return (
