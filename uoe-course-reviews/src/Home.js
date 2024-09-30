@@ -2,8 +2,8 @@ import './App.css';
 import * as React from 'react'
 import { ChakraProvider, Accordion } from '@chakra-ui/react'
 import theme from './Theme'
-import SearchAndFilterBar from './SearchAndFilterBar';
-import CourseAccordionItem from './CourseAccordion';
+import SearchAndFilterBar from './components/SearchAndFilterBar';
+import CourseAccordionItem from './components/CourseAccordion';
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -23,12 +23,12 @@ function Home() {
     <ChakraProvider theme={theme}>
       <SearchAndFilterBar></SearchAndFilterBar>
       <Accordion allowMultiple={true}>
-            {courses.map(course => 
-            <CourseAccordionItem courseCode={course["Code/DPT"]} courseLink ={course["DPMT_Link"]} 
+            {courses.map((course, index) => 
+            <CourseAccordionItem key ={index} courseCode={course["Code/DPT"]} courseLink ={course["DPMT_Link"]} 
               courseName = {course["Course_Name"]} courseDelivery = {course["Delivery"]} 
               courseWorkExamRatio={course["Work%/Exam%"]} courseCredits={course["Credits"]} 
               courseLevel = {course["Level"]} description = "This is a test description." 
-              averageRating="N/A" numberOfReviews="0" listOfStudentReviews = {["",""]}>
+              averageRating="N/A" numberOfReviews="0" listOfStudentReviews = {course["reviews"] || []}>
             </CourseAccordionItem>)}
       </Accordion>
     </ChakraProvider>
