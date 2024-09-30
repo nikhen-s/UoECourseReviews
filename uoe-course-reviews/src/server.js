@@ -22,4 +22,9 @@ app.get("/api/courses", async (req, res) => {
   }
 });
 
+app.post("/coursereview", function handlePostRequest(req, res){
+  console.log(req.body)
+  console.log(res)
+})
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

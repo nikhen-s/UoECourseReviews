@@ -1,11 +1,10 @@
 import {Text} from '@chakra-ui/react'
 import { Rating } from 'react-simple-star-rating'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
     FormControl,
     FormLabel,
     Flex,
-    Box,
     Button,
     Stack,
     Select,
@@ -22,14 +21,33 @@ import {
     NumberDecrementStepper
   } from '@chakra-ui/react'
 const Review = () => {
-    
+    const [courseName, setCourseName] = useState('')
+    const [typeOfStudent, setTypeOfStudent] = useState('Undergraduate')
+    const [yearTaken, setYearTaken] = useState(2024)
+    const [teachingQualityRating, setTeachingQualityRating] = useState(0)
+    const [learningImpactRating, setLearningImpactRating] = useState(0)
+    const [workloadBalanceRating, setWorkloadBalanceRating] = useState(0)
+    const [review, setReview] = useState('')
+
+    const addReview = () => {
+        //courseName, typeOfStudent, review, teachingQualityRating, learningImpactRating, workloadBalanceRating, yearTaken
+        console.log(courseName) 
+        console.log(typeOfStudent)
+        console.log(yearTaken)
+        console.log(teachingQualityRating)
+        console.log(learningImpactRating)
+        console.log(workloadBalanceRating)
+        console.log(review)
+    }
+    //Do a post request from server using axios, the post request should create a courseReview then add it to the addReview function! then input validation.
+
     return (
         <FormControl paddingTop={5} paddingLeft={10} paddingRight={10} verticalAlign={"center"} rounded="md" spacing={3}>
             <Stack spacing={2}>
                 <FormLabel fontWeight={"bold"}>Course Name</FormLabel>
-                <Input type='text' borderColor={'black'} backgroundColor="white"/>          
+                <Input type='text' borderColor={'black'} backgroundColor="white" onChange={(event)=>setCourseName(event.target.value)}/>          
                 <FormLabel as='legend' fontWeight={"bold"}>Type of Student</FormLabel>
-                <RadioGroup defaultValue='Undergraduate'>
+                <RadioGroup defaultValue='Undergraduate' onChange={setTypeOfStudent} value={typeOfStudent}>
                     <HStack spacing='24px'>
                     <Radio value='Undergraduate' borderColor={'grey'}>Undergraduate</Radio>
                     <Radio value='Masters' borderColor={'grey'}>Masters</Radio>
@@ -38,7 +56,7 @@ const Review = () => {
                     </HStack>
                 </RadioGroup>
                 <FormLabel fontWeight={"bold"}>When did you take this course?</FormLabel>
-                <NumberInput max={2024} min={1900} defaultValue={2024} borderColor={'black'}>
+                <NumberInput max={2024} min={1900} defaultValue={2024} borderColor={'black'} onChange={setYearTaken}>
                     <NumberInputField />
                     <NumberInputStepper>
                     <NumberIncrementStepper />
@@ -47,13 +65,13 @@ const Review = () => {
                 </NumberInput>
                 <Text fontWeight={"bold"}>Rating</Text>
                 <Stack rounded="md" borderColor={"black"} border={"1px"} p ={4} width={"100%"}>
-                    <RatingCriteriaBox ratingCriteria={"Teaching Quality"}></RatingCriteriaBox>
-                    <RatingCriteriaBox ratingCriteria={"Learning Impact"}></RatingCriteriaBox>
-                    <RatingCriteriaBox ratingCriteria={"Workload Balance"}></RatingCriteriaBox> 
+                    <RatingCriteriaBox ratingCriteria={"Teaching Quality"} rating ={teachingQualityRating} setRating={setTeachingQualityRating}></RatingCriteriaBox>
+                    <RatingCriteriaBox ratingCriteria={"Learning Impact"} rating={learningImpactRating} setRating={setLearningImpactRating}></RatingCriteriaBox>
+                    <RatingCriteriaBox ratingCriteria={"Workload Balance"} rating={workloadBalanceRating} setRating={setWorkloadBalanceRating}></RatingCriteriaBox> 
                 </Stack>
                 <FormLabel fontWeight={"bold"}>Review/Study Tips</FormLabel>
-                <Input type='text' borderColor={'black'} height={70}/>
-                <Button width="7%" backgroundColor="gray.800" color="white">
+                <Input type='text' borderColor={'black'} height={70} onChange={(event) => setReview(event.target.value)}/>
+                <Button width="7%" backgroundColor="gray.800" color="white" onClick={addReview}>
                     Submit
                 </Button>
             </Stack> 
@@ -61,8 +79,7 @@ const Review = () => {
     )
 }
 
-const RatingCriteriaBox = ({ratingCriteria}) => {
-    const [rating, setRating] = useState(0)
+const RatingCriteriaBox = ({ratingCriteria, rating, setRating}) => {
     const handleRating = (rate, index) => {
         setRating(rate)
     }
