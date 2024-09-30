@@ -21,7 +21,7 @@ function Home() {
 
   return (
     <ChakraProvider theme={theme}>
-      <SearchAndFilterBar></SearchAndFilterBar>
+      <SearchAndFilterBar setCourses={setCourses}></SearchAndFilterBar>
       <Accordion allowMultiple={true}>
             {courses.map((course, index) => 
             <CourseAccordionItem key ={index} courseCode={course["Code/DPT"]} courseLink ={course["DPMT_Link"]} 
