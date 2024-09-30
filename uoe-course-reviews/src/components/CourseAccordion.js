@@ -49,7 +49,7 @@ function CourseDetailsBox({courseCode, courseLink, courseName, courseDelivery, c
       <AccordionPanel pb={2}>
       <Stack spacing={2}>
         {studentReviews.map((review, index) => (
-          <ReviewCard key={index}></ReviewCard>
+          <ReviewCard key={index} yearTaken={review["yearTaken"]} teachingQualityRating={review["teachingQualityRating"]} learningImpactRating={review["learningImpactRating"]} workloadBalanceRating={review["workloadBalanceRating"]} review={review["review"]}></ReviewCard>
         ))}
       </Stack>
       </AccordionPanel>
