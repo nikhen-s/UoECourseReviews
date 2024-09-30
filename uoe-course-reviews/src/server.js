@@ -5,6 +5,7 @@ const Course = require("./models/Course");
 const app = express()
 const PORT = process.env.PORT || 4000;
 const URI = process.env.MONGODB_URI || "";
+app.use(express.json());
 
 mongoose.connect(URI, {
   useNewUrlParser: true,
@@ -22,9 +23,29 @@ app.get("/api/courses", async (req, res) => {
   }
 });
 
-app.post("/coursereview", function handlePostRequest(req, res){
-  console.log(req.body)
-  console.log(res)
+app.post("/addreview", async function handlePostRequest(req, res){
+  const courseName = req.body.courseName
+  const courseReviewJson = req.body
+  try{
+    const updatedCourse = await Course.findOneAndUpdate(
+      { "Course_Name": courseName },  // Query to find the course
+      { $push: { reviews: courseReviewJson } },  // Update to push the review
+      { new: true }  // Option to return the updated document
+    );
+    if (updatedCourse) {
+      res.json({
+        reviewAdded: courseReviewJson,
+        message: "Successful"
+      });
+    } else {
+      res.status(404).json({
+        message: "Course not found"
+      });
+    }
+  } catch (error){
+    console.error(error);
+    res.status(500).send("Add Review Error");
+  }
 })
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

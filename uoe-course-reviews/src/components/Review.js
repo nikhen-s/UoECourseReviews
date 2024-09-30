@@ -1,6 +1,7 @@
 import {Text} from '@chakra-ui/react'
 import { Rating } from 'react-simple-star-rating'
 import { useState } from "react";
+import axios from "axios";
 import {
     FormControl,
     FormLabel,
@@ -31,13 +32,20 @@ const Review = () => {
 
     const addReview = () => {
         //courseName, typeOfStudent, review, teachingQualityRating, learningImpactRating, workloadBalanceRating, yearTaken
-        console.log(courseName) 
-        console.log(typeOfStudent)
-        console.log(yearTaken)
-        console.log(teachingQualityRating)
-        console.log(learningImpactRating)
-        console.log(workloadBalanceRating)
-        console.log(review)
+        axios.post('/addreview', {
+            courseName: courseName,
+            typeOfStudent: typeOfStudent,
+            yearTaken: yearTaken,
+            teachingQualityRating: teachingQualityRating,
+            learningImpactRating: learningImpactRating,
+            workloadBalanceRating: workloadBalanceRating,
+            review: review
+        }).then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
     //Do a post request from server using axios, the post request should create a courseReview then add it to the addReview function! then input validation.
 
