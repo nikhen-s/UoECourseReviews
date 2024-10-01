@@ -1,11 +1,17 @@
-import { Stack, Box, Flex, Center, Text, Spacer} from '@chakra-ui/react'
+import { HStack, Button, Stack, Box, Flex, Center, Text, Spacer, Heading} from '@chakra-ui/react'
+import { TiStar } from "react-icons/ti";
 import {
   AccordionItem,
   AccordionButton,
   AccordionPanel,
-  AccordionIcon,
 } from '@chakra-ui/react'
-import { useState, useEffect } from "react";
+import {
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderMark,
+} from '@chakra-ui/react'
 import ReviewCard from './ReviewCard'
 function CourseDetailsBox({courseCode, courseLink, courseName, courseDelivery, courseWorkExamRatio, courseCredits, courseLevel, averageRating, numberOfReviews, ratingsBoxColor}){
 
@@ -45,6 +51,8 @@ function CourseDetailsBox({courseCode, courseLink, courseName, courseDelivery, c
       (currentReview["teachingQualityRating"] + currentReview["learningImpactRating"] + 
       currentReview["workloadBalanceRating"]) + accumulator, 0)/ (numberOfReviews*3)).toFixed(2).toString()
     }
+    const averageTeachingQualityRating = (studentReviews.reduce((accumulator, currentReview) => 
+    (currentReview["teachingQualityRating"] + accumulator), 0)/ (numberOfReviews)).toFixed(2).toString()
     let ratingsBoxColor = "gray.500"
     if (averageRating=="N/A"){
       ratingsBoxColor = "gray.500"
@@ -57,6 +65,9 @@ function CourseDetailsBox({courseCode, courseLink, courseName, courseDelivery, c
     } else {
       ratingsBoxColor = "red.500"
     }
+    const addCourseReview = () => {
+      
+    }
     return(
       <AccordionItem borderRadius='md' marginLeft={4} marginRight={4}>
       <h2>
@@ -68,12 +79,81 @@ function CourseDetailsBox({courseCode, courseLink, courseName, courseDelivery, c
       </h2>
       <AccordionPanel pb={2}>
       <Stack spacing={2}>
+        <HStack p={2}>
+          <Heading fontSize={"large"}>Average Rating:</Heading>
+          <Text>{averageRating}</Text>
+          <Spacer></Spacer>
+          <a href="/review">
+            <Button onClick={addCourseReview} backgroundColor={"blue.200"}>
+              Review Course
+            </Button>
+          </a>
+        </HStack>
         {studentReviews.map((review, index) => (
           <ReviewCard key={index} typeOfStudent={review["typeOfStudent"]} yearTaken={review["yearTaken"]} teachingQualityRating={review["teachingQualityRating"]} learningImpactRating={review["learningImpactRating"]} workloadBalanceRating={review["workloadBalanceRating"]} review={review["review"]}></ReviewCard>
         ))}
       </Stack>
       </AccordionPanel>
     </AccordionItem>
+    )
+  }
+
+  const RatingsBreakDown = ({listOfStudentReviews}) => {
+    return(
+      <Flex>
+        <Stack borderColor={"black"} rounded={"md"} bg="gray.200" p ={3} spacing={0}>
+        <Text fontSize={"sm"}>Teaching Quality</Text>
+          <HStack>
+            <HStack spacing={0}>
+            <Text fontSize={"sm"}>5</Text><TiStar></TiStar>
+            </HStack>
+            <Slider min={0} max={100} colorScheme='gold' isReadOnly={true} defaultValue={100}>
+              <SliderTrack bg="grey">
+              <SliderFilledTrack bg="gold"/>
+            </SliderTrack>
+            <Slider Thumb boxSize={6} />
+          </Slider>
+          </HStack>
+          <HStack>
+          <HStack spacing={0}>
+            <Text fontSize={"sm"}>4</Text><TiStar></TiStar>
+            </HStack>
+            <Slider min={0} max={100} colorScheme='gold' isReadOnly={true} defaultValue={100}>
+              <SliderTrack bg="grey">
+              <SliderFilledTrack bg="gold"/>
+            </SliderTrack>
+            <Slider Thumb boxSize={6} />
+          </Slider>
+          </HStack>
+          <HStack>
+            <Text fontSize={"sm"}>3</Text>
+            <Slider min={0} max={100} colorScheme='gold' isReadOnly={true} defaultValue={100}>
+              <SliderTrack bg="grey">
+              <SliderFilledTrack bg="gold"/>
+            </SliderTrack>
+            <Slider Thumb boxSize={6} />
+          </Slider>
+          </HStack>
+          <HStack>
+            <Text fontSize={"sm"}>2</Text>
+            <Slider min={0} max={100} colorScheme='gold' isReadOnly={true} defaultValue={100}>
+              <SliderTrack bg="grey">
+              <SliderFilledTrack bg="gold"/>
+            </SliderTrack>
+            <Slider Thumb boxSize={6} />
+          </Slider>
+          </HStack>
+          <HStack>
+            <Text fontSize={"sm"}>1</Text>
+            <Slider min={0} max={100} colorScheme='gold' isReadOnly={true} defaultValue={100}>
+              <SliderTrack bg="grey">
+              <SliderFilledTrack bg="gold"/>
+            </SliderTrack>
+            <Slider Thumb boxSize={6} />
+          </Slider>
+          </HStack>
+        </Stack>
+      </Flex>
     )
   }
 
