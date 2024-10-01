@@ -14,7 +14,6 @@ import {
 } from '@chakra-ui/react'
 import ReviewCard from './ReviewCard'
 function CourseDetailsBox({courseCode, courseLink, courseName, courseDelivery, courseWorkExamRatio, courseCredits, courseLevel, averageRating, numberOfReviews, ratingsBoxColor}){
-
     return (
     <Flex justifyContent="space-between" w = "100%">
       <Box display={"flex"} w ="7%" textAlign={"left"}>
