@@ -28,7 +28,7 @@ function Home() {
               courseName = {course["Course_Name"]} courseDelivery = {course["Delivery"]} 
               courseWorkExamRatio={course["Work%/Exam%"]} courseCredits={course["Credits"]} 
               courseLevel = {course["Level"]} description = "This is a test description." 
-              averageRating="N/A" numberOfReviews="0" listOfStudentReviews = {course["reviews"] || []}>
+              listOfStudentReviews = {course["reviews"] || []}>
             </CourseAccordionItem>)}
       </Accordion>
     </ChakraProvider>
