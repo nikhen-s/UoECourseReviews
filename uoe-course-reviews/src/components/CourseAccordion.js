@@ -64,9 +64,6 @@ function CourseDetailsBox({courseCode, courseLink, courseName, courseDelivery, c
     } else {
       ratingsBoxColor = "red.500"
     }
-    const addCourseReview = () => {
-      
-    }
     return(
       <AccordionItem borderRadius='md' marginLeft={4} marginRight={4}>
       <h2>
@@ -83,7 +80,7 @@ function CourseDetailsBox({courseCode, courseLink, courseName, courseDelivery, c
           <Text>{averageRating}</Text>
           <Spacer></Spacer>
           <a href="/review">
-            <Button onClick={addCourseReview} backgroundColor={"blue.200"}>
+            <Button backgroundColor={"blue.200"}>
               Review Course
             </Button>
           </a>
