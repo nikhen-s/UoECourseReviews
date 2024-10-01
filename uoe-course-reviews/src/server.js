@@ -24,11 +24,11 @@ app.get("/api/courses", async (req, res) => {
 });
 
 app.post("/addreview", async function handlePostRequest(req, res){
-  const courseName = req.body.courseName
+  const courseCode = req.body.courseCode
   const courseReviewJson = req.body
   try{
     const updatedCourse = await Course.findOneAndUpdate(
-      { "Course_Name": courseName },  // Query to find the course
+      { "Code/DPT": courseCode },  // Query to find the course
       { $push: { reviews: courseReviewJson } },  // Update to push the review
       { new: true }  // Option to return the updated document
     );

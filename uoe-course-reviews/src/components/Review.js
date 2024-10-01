@@ -22,7 +22,7 @@ import {
     NumberDecrementStepper
   } from '@chakra-ui/react'
 const Review = () => {
-    const [courseName, setCourseName] = useState('')
+    const [courseCode, setCourseCode] = useState('')
     const [typeOfStudent, setTypeOfStudent] = useState('Undergraduate')
     const [yearTaken, setYearTaken] = useState(2024)
     const [teachingQualityRating, setTeachingQualityRating] = useState(0)
@@ -30,10 +30,14 @@ const Review = () => {
     const [workloadBalanceRating, setWorkloadBalanceRating] = useState(0)
     const [review, setReview] = useState('')
 
+    const validationCheck = () => {
+        
+    }
+
     const addReview = () => {
         //courseName, typeOfStudent, review, teachingQualityRating, learningImpactRating, workloadBalanceRating, yearTaken
         axios.post('/addreview', {
-            courseName: courseName,
+            courseCode: courseCode,
             typeOfStudent: typeOfStudent,
             yearTaken: yearTaken,
             teachingQualityRating: teachingQualityRating,
@@ -48,12 +52,48 @@ const Review = () => {
           });
     }
     //Do a post request from server using axios, the post request should create a courseReview then add it to the addReview function! then input validation.
-
+    const [courseDropDown, setCourseDropDown] = useState([])
+    const filterCourses = (filterQuery) => {
+        if (filterQuery.length == 0){
+            setCourseDropDown([])
+        } else {
+            axios.get("/api/courses")
+                .then(response => {
+                    setCourseDropDown(response.data.filter((course)=>course["Course_Name"].toLowerCase().includes(searchQuery.toLowerCase())))
+                }
+                    )
+                .catch(error => console.error(error));
+        }
+    }
+    const getSearchValue = (courseCode, courseName, currentInput) => {
+        if (courseCode==''){
+            return currentInput
+        } else{
+            return courseCode + " - " + courseName
+        }
+    }
+    const [searchQuery, setSearchQuery] = useState('')
     return (
         <FormControl paddingTop={5} paddingLeft={10} paddingRight={10} verticalAlign={"center"} rounded="md" spacing={3}>
             <Stack spacing={2}>
                 <FormLabel fontWeight={"bold"}>Course Name</FormLabel>
-                <Input type='text' borderColor={'black'} backgroundColor="white" onChange={(event)=>setCourseName(event.target.value)}/>          
+                <Input type='text' value={searchQuery} 
+                borderColor={'black'} backgroundColor="white" 
+                onChange={(event)=> {
+                setSearchQuery(event.target.value)
+                filterCourses(event.target.value)
+                }}/>
+                {
+                    courseDropDown.length > 0 && 
+                    courseDropDown.map((course) => (
+                        <Text key={course["Course_Name"]} onClick={() => {
+                            setSearchQuery(course["Code/DPT"].toString() + " - " + course["Course_Name"].toString())
+                            setCourseCode(course["Code/DPT"])
+                            setCourseDropDown([])
+                        }}>{course["Code/DPT"].toString()} - {course["Course_Name"].toString()}</Text>
+                    ))
+                }
+
                 <FormLabel as='legend' fontWeight={"bold"}>Type of Student</FormLabel>
                 <RadioGroup defaultValue='Undergraduate' onChange={setTypeOfStudent} value={typeOfStudent}>
                     <HStack spacing='24px'>

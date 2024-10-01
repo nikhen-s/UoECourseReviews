@@ -1,6 +1,4 @@
 import { Card, Flex, CardBody, Avatar, Box, Heading, Stack, Text } from '@chakra-ui/react'
-import { TiStar } from "react-icons/ti";
-import { Rating } from 'react-simple-star-rating'
 
 
 const ReviewCard = ({typeOfStudent, yearTaken, teachingQualityRating, learningImpactRating, workloadBalanceRating, review}) => {
