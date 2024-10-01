@@ -14,6 +14,7 @@ import {
     HStack,
     Radio,
     FormHelperText,
+    Textarea,
     Input,
     NumberInput,
     NumberInputField,
@@ -150,7 +151,11 @@ const Review = () => {
                         <RatingCriteriaBox ratingCriteria={"Workload Balance"} rating={workloadBalanceRating} setRating={setWorkloadBalanceRating}></RatingCriteriaBox> 
                     </Stack>
                     <FormLabel fontWeight={"bold"}>Review/Study Tips</FormLabel>
-                    <Input type='text' borderColor={'black'} height={70} onChange={(event) => setReview(event.target.value)}/>
+                    <Textarea
+                        value={review}
+                        onChange={(event) => setReview(event.target.value)}
+                        placeholder='review..'
+                    />
                     <Button width="7%" backgroundColor="gray.800" color="white" onClick={
                         (review) => {
                             validationCheck()
