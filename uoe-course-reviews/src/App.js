@@ -5,6 +5,7 @@ import Home from "./Home";
 import Review from "./components/Review"
 import DesktopNavBar from "./components/NavBar";
 import theme from './Theme'
+import AboutUs from "./AboutUs";
 function App() {
   return (
     <Router>
@@ -13,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/review" element={<Review />} />
-          <Route path="/aboutus" element={<Home />} />
+          <Route path="/aboutus" element={<AboutUs />} />
         </Routes>
         </ChakraProvider>
     </Router>
