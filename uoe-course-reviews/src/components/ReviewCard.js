@@ -1,5 +1,8 @@
 import { Card, Flex, CardBody, Avatar, Box, Heading, Stack, Text } from '@chakra-ui/react'
 import { TiStar } from "react-icons/ti";
+import { Rating } from 'react-simple-star-rating'
+
+
 const ReviewCard = ({typeOfStudent, yearTaken, teachingQualityRating, learningImpactRating, workloadBalanceRating, review}) => {
     return(
         <Card variant ={"outline"} borderColor="lightgrey" p ={1} size="sm">
@@ -8,19 +11,17 @@ const ReviewCard = ({typeOfStudent, yearTaken, teachingQualityRating, learningIm
             <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
                 <Box>
                 <Heading size='sm'>Anonymous {typeOfStudent} Student</Heading>
-                <Stack direction='row' spacing='0'>
-                    <TiStar color="gold"/>
-                    <TiStar color="gold"/>
-                    <TiStar color="gold"/>
-                    <TiStar color="gold"/>
-                    <TiStar color="gold"/>
-                </Stack>
+                <Flex flexDirection={"row"} gap="1">
+                <Box borderRadius={"10"} bgColor={"gray.400"} textAlign={"center"} p={1} width={"35%"} fontSize="small"> Teaching: {teachingQualityRating} </Box>
+                <Box borderRadius={"10"} bgColor={"gray.400"} textAlign={"center"} p={1} width={"35%"} fontSize="small"> Learning: {learningImpactRating} </Box>
+                <Box borderRadius={"10"} bgColor={"gray.400"} textAlign={"center"} p={1} width={"35%"} fontSize="small"> WB: {workloadBalanceRating} </Box>
+                </Flex>
                 </Box>
             </Flex>
-            <Text>{yearTaken}</Text>
+            <Text>Year Course Taken: <strong>{yearTaken}</strong></Text>
             </Flex>
-            <Text>
-            {review}
+            <Text style={{"font-style":"italic"}}>
+            "{review}"
             </Text>
         </CardBody>
         </Card>
